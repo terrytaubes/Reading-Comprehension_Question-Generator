@@ -1,0 +1,7 @@
+Dependencies are way too big to upload to github.
+
+For now you can try to find them:
+
+Google's gson
+Stanford CoreNLP (stanford-corenlp-full-2017-06-09)
+Extended Java Wordnet Library (extjwnl-1.9.3, extjwnl-data-wn31-1.2, extjwnl-utilities-1.9.3)
