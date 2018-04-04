@@ -16,7 +16,6 @@ from nltk.corpus import brown
 # - Bigrams and their probabilities are exported to validator_bigram_prob.txt in the format:  word1/word2=probability
 #     as this is how the validator component in the rest of the program will read in the values.
 
-
 ## Create bigrams from the brown corpus
 def import_brown():
 
@@ -37,10 +36,7 @@ def import_brown():
         current_tokens = [word for word in current_tokens if word != "," and word !="''" \
                           and word != "``" and word !=":" and word !=";"]
 
-                         
         current_tokens.insert(0, "%")
-
-        
             
         print "uni/bi"
         for i in range(len(current_tokens)-1):
@@ -70,11 +66,12 @@ def import_brown():
             else:
                 unigram_count_dict[len(current_tokens)-1] = 1
 
-    
-
+                
     print len(bigram_count_dict.keys())
 
     return bigram_count_dict, unigram_count_dict
+
+
 
 ## Create bigrams from the Stanford Question Answering Dataset and write to file.
 def import_json(bigram_count_dict, unigram_count_dict):
@@ -86,7 +83,6 @@ def import_json(bigram_count_dict, unigram_count_dict):
         train = json.load(f)
 
     print "json loaded"
-
 
     #bigram_count_dict = {}
     #unigram_count_dict = {}
@@ -136,9 +132,6 @@ def import_json(bigram_count_dict, unigram_count_dict):
                         bigram_count_dict[curr_bigram] += 1
                     else:
                         bigram_count_dict[curr_bigram] = 1
-
-                
-
                 
                 #print train['data'][i]['paragraphs'][j]['qas'][1]['question']
 
@@ -153,8 +146,7 @@ def import_json(bigram_count_dict, unigram_count_dict):
     total_bigrams = len(bigram_count_dict.keys())
     print "total bigrams:", total_bigrams
 
-
-
+    
     #for key in unigram_count_dict.keys():
     #    print key, "-", unigram_count_dict[key]
 
@@ -177,10 +169,9 @@ def import_json(bigram_count_dict, unigram_count_dict):
 
         #print key, "-", bigram_count_dict[key]
         
-        
     print "once", once, "more", more
-
-
+    
+    ## Write bigrams to file
     bi_prob = codecs.open("validator_bigram_prob.txt", "w", "utf-8")
     for key in bigram_prob_dict.keys():
         try:
@@ -190,6 +181,7 @@ def import_json(bigram_count_dict, unigram_count_dict):
 
     bi_prob.close()
 
+    ## Write unigrams to file
     uni_prob = codecs.open("validator_unigram_prob.txt", "w", "utf-8")
     for key in unigram_count_dict.keys():
         try:
@@ -212,7 +204,8 @@ def import_json(bigram_count_dict, unigram_count_dict):
 
     return bigram_prob_dict, bigram_count_dict, unigram_count_dict
 
-
+## Run to generate bigrams/unigrams if neccessary. However, this takes a long time as the datasets are quite large.
+##   Just use the already prepared files in Reading-Comprehension_Question-Generator/BigramModel/ :)
 def main():
 
 
