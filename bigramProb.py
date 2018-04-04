@@ -16,6 +16,8 @@ from nltk.corpus import brown
 # - Bigrams and their probabilities are exported to validator_bigram_prob.txt in the format:  word1/word2=probability
 #     as this is how the validator component in the rest of the program will read in the values.
 
+
+## Create bigrams from the brown corpus
 def import_brown():
 
     b_count = 0
@@ -74,7 +76,7 @@ def import_brown():
 
     return bigram_count_dict, unigram_count_dict
 
-
+## Create bigrams from the Stanford Question Answering Dataset and write to file.
 def import_json(bigram_count_dict, unigram_count_dict):
 
     print "entered import_json"
