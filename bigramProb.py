@@ -9,6 +9,12 @@ import codecs
 
 from nltk.corpus import brown
 
+### bigramProb.py ###
+# - This file is used simply as a tool to process the text from the Brown Corpus and Stanford Question Answering Dataset.
+# - This is the only python file, it does not interact with the rest of the proram.
+# - Text from the datasets are processed into bigrams. Each bigram is calculated a probability for its appearance within the test data.
+# - Bigrams and their probabilities are exported to validator_bigram_prob.txt in the format:  word1/word2=probability
+#     as this is how the validator component in the rest of the program will read in the values.
 
 def import_brown():
 
